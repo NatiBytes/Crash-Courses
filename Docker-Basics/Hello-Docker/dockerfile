@@ -1,0 +1,9 @@
+FROM node:24-alpine3.20
+
+WORKDIR /app
+
+# Copy Evrything from our current di to docker image
+# (First dot is current dir on our machine and second dot is the path to the current dir within the container)
+COPY . .
+
+CMD node hello.js
