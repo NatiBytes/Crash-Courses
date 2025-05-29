@@ -22,3 +22,9 @@
 - `docker run hello-docker` 
 - `docker run -it hello-docker sh` to run it in shell mode
     ![Screen Shot of Docker run in shell mode](/Docker-Basics/Hello-Docker/Readme-Images/shellmode.png)
+
+## Useful commands
+- list all containers `docker ps -a`
+- Stop a single container using the first 4 digits of it's id `docker stop d842`
+- Remove all stoped containers `docker container prune`
+- Remove a single container by name or id `docker rm [id/name]`

@@ -1,3 +1,21 @@
+# How to build the docker image
+
+- `docker build -t react-docker .` Note: the dot at the end indicated you are running this from the same dir as the docker
+
+# How to run Docker the image in Docker Container
+
+Note the port needs to be expose to our:
+- Host machine
+- And Vite because we are using Vite in out app
+
+1. Update package.json 
+  - From -> "dev": "vite",
+  - To ->     "dev": "vite --host",
+
+2.  Then:   
+  - `docker run -p 5173:5173 react-docker` 
+  - With "5173:5173" we are mapping the container port to the port on our host machine
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
