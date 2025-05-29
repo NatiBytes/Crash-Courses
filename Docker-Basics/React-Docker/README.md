@@ -12,9 +12,16 @@ Note the port needs to be expose to our:
   - From -> "dev": "vite",
   - To ->     "dev": "vite --host",
 
-2.  Then:   
-  - `docker run -p 5173:5173 react-docker` 
-  - With "5173:5173" we are mapping the container port to the port on our host machine
+2.  Then run only one of the following command:   
+  - `docker run -p 5173:5173 react-docker` With "5173:5173" we are mapping the container port to the port on our host machine
+  - `docker run -p 5173:5173 -v "$(pwd):/app" react-docker` If you want any changes you make loaclly to sync. This tells docker to mount the current working directory where we run the docker run command into the app dir inside the container. This means our local code is linked to the container and any changes we make localy will be reflected inside the running container. $(pwd) - represents the current working dir and executes on run time to provide the currecnt dir path. and -v stands for volume, this is beacause we are creating a volume that will keep track of the changes
+  - `docker run -p 5173:5173 -v "$(pwd):/app" -v /app/node_modules react-docker` Create a new volume mount for the modules dir with in the container. We do this to ensure when we plan to make changes to the dpendencies, this will insure those changes are avilable to our container from our local modules.
+  
+
+It is possible to run into issues where the chnges are not being reflected when using bind mount E.g. `docker run -p 5173:5173 -v "$(pwd):/app" react-docker`
+- Possible fix - if running on windows make sure to use cmd or power shell. You're likely running this from Git Bash on Windows, which mangles volume paths when passed to Docker. This is a known issue and you can inspect the running container to see if the path is correct under "Mounts".
+- On Powershell `docker run -it --rm -p 5173:5173 -v ${PWD}:/app react-docker`
+- On cmd `docker run -it --rm -p 5173:5173 -v %cd%:/app react-docker `
 
 # React + TypeScript + Vite
 

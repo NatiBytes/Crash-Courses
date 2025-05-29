@@ -28,3 +28,10 @@
 - Stop a single container using the first 4 digits of it's id `docker stop d842`
 - Remove all stoped containers `docker container prune`
 - Remove a single container by name or id `docker rm [id/name]`
+- Inspect a container `docker inspect [First 4 letters of id]`
+
+
+## how to deploy docker image to your registery
+- Login `docker login`
+- Publish E.g. `docker tag react-docker 300543025/react-docker` 300543025 this is your username
+- `docker push 300543025/react-docker`

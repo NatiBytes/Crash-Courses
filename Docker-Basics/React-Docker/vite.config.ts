@@ -8,7 +8,6 @@ export default defineConfig({
     port: 5173,
     watch: {
       usePolling: true,
-      interval: 100, // optional: how often to poll (ms)
     },
   },
 })
