@@ -1,3 +1,6 @@
+### Run Docker Compose
+1. `dockerdocker compose up`
+2. 
 ### Building and running your application
 
 When you're ready, start your application by running:
